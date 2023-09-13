@@ -60,34 +60,34 @@ module appInsights './azmon.bicep' = {
   }
 }
 
-module vm_devopswinvm './createvmwindows.bicep' = if (toLower(CICDAgentType)!='none') {
-  name: 'devopsvm'
-  scope: resourceGroup(resourceGroupName)
-  params: {
-    location: location
-    subnetId: CICDAgentSubnetId
-    username: vmUsername
-    password: vmPassword
-    vmName: '${CICDAgentType}-${environment}'
-    accountName: accountName
-    personalAccessToken: personalAccessToken
-    CICDAgentType: CICDAgentType
-    deployAgent: true
-  }
-}
+// module vm_devopswinvm './createvmwindows.bicep' = if (toLower(CICDAgentType)!='none') {
+//   name: 'devopsvm'
+//   scope: resourceGroup(resourceGroupName)
+//   params: {
+//     location: location
+//     subnetId: CICDAgentSubnetId
+//     username: vmUsername
+//     password: vmPassword
+//     vmName: '${CICDAgentType}-${environment}'
+//     accountName: accountName
+//     personalAccessToken: personalAccessToken
+//     CICDAgentType: CICDAgentType
+//     deployAgent: true
+//   }
+// }
 
-module vm_jumpboxwinvm './createvmwindows.bicep' = {
-  name: 'vm-jumpbox'
-  scope: resourceGroup(resourceGroupName)
-  params: {
-    location: location
-    subnetId: jumpboxSubnetId
-    username: vmUsername
-    password: vmPassword
-    CICDAgentType: CICDAgentType
-    vmName: 'jumpbox-${environment}'
-  }
-}
+// module vm_jumpboxwinvm './createvmwindows.bicep' = {
+//   name: 'vm-jumpbox'
+//   scope: resourceGroup(resourceGroupName)
+//   params: {
+//     location: location
+//     subnetId: jumpboxSubnetId
+//     username: vmUsername
+//     password: vmPassword
+//     CICDAgentType: CICDAgentType
+//     vmName: 'jumpbox-${environment}'
+//   }
+// }
 
 resource key_vault 'Microsoft.KeyVault/vaults@2019-09-01' = {
   name: keyVaultName
@@ -124,8 +124,8 @@ resource key_vault 'Microsoft.KeyVault/vaults@2019-09-01' = {
 
 // Outputs
 output appInsightsConnectionString string = appInsights.outputs.appInsightsConnectionString
-output CICDAgentVmName string = vm_devopswinvm.name
-output jumpBoxvmName string = vm_jumpboxwinvm.name
+output CICDAgentVmName string = 'vm_devopswinvm.name'
+output jumpBoxvmName string = 'vm_jumpboxwinvm.name'
 output appInsightsName string=appInsights.outputs.appInsightsName
 output appInsightsId string=appInsights.outputs.appInsightsId
 output appInsightsInstrumentationKey string=appInsights.outputs.appInsightsInstrumentationKey
