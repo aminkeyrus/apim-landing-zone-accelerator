@@ -1,4 +1,4 @@
-AZURE_LOCATION: 'westus2'
+AZURE_LOCATION: 'eastus'
 RESOURCE_NAME_PREFIX: 'apibou'
 ENVIRONMENT_TAG: 'dev'
 DEPLOYMENT_NAME: 'ase-demoabou-deployment'
