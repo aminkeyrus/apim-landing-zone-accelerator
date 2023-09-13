@@ -1,5 +1,5 @@
 AZURE_LOCATION: 'westus2'
-RESOURCE_NAME_PREFIX: 'apim06400abou'
+RESOURCE_NAME_PREFIX: 'apibou'
 ENVIRONMENT_TAG: 'dev'
 DEPLOYMENT_NAME: 'ase-demoabou-deployment'
 VM_USERNAME: 'agent'
